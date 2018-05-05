@@ -2,7 +2,7 @@
   "name": "greenbackd",
   "version": "1.0.0",
   "description": "",
-  "main": "truffle-config.js",
+  "main": "index.js",
   "directories": {
     "test": "test"
   },
@@ -24,7 +24,13 @@
     "react-dom": "^16.3.2",
     "style-loader": "^0.21.0",
     "web3": "^0.20.0",
-    "webpack": "^4.7.0",
+    "webpack": "^3.5.4",
     "webpack-cli": "^2.1.2"
+  },
+  "dependencies": {
+    "compact-json-loader": "^0.1.1",
+    "fs": "0.0.1-security",
+    "openzeppelin-solidity": "^1.9.0",
+    "solc": "^0.4.23"
   }
 }
