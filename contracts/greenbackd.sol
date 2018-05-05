@@ -21,6 +21,7 @@ contract Greenbackd {
 
     // Credit MSG.SENDER's balance with the appropriate token amount.
     function makePurchase(uint32 itemId) external {
+        require(itemIdToToken[itemId] != 0); // item must exist
         userIdToBalance[msg.sender] += itemIdToToken[itemId];
     }
 
