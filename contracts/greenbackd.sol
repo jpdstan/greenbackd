@@ -1,8 +1,8 @@
 pragma solidity ^0.4.23;
 
-//import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
+import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
-contract Greenbackd {
+contract Greenbackd is Ownable {
 
     // Items to token value
     mapping (uint32 => uint32) itemIdToToken;
@@ -31,13 +31,13 @@ contract Greenbackd {
     }
 
     // Add an (itemId, value) pair to itemIdToToken.
-    function addItemToTokenList(uint32 itemId, uint32 value) external {
+    function addItemToTokenList(uint32 itemId, uint32 value) external onlyOwner {
         require(itemIdToToken[itemId] == 0); // don't allow for duplicate items
         itemIdToToken[itemId] = value;
     }
 
     // Modify an existing (itemId, value) pair in itemIdToToken.
-    function changeItemPrice(uint32 itemId, uint32 value) external {
+    function changeItemPrice(uint32 itemId, uint32 value) external onlyOwner {
         require(itemIdToToken[itemId] != 0); // item must exist already
         itemIdToToken[itemId] = value;
     }
