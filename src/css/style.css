@@ -1,59 +1,65 @@
 body{
-    font-family: 'open sans';
-    margin: 0;
+  font-family: 'open sans';
+  margin: 0;
 }
 ul{
-    list-style-type: none;
-    padding-left: 0;
-    display: flex;
-    justify-content: space-around;
-    max-width: 1300px;
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  justify-content: space-around;
+  max-width: 1300px;
 }
 li{
-    padding: 40px;
-    border: 2px solid rgb(121,189,154);
-    margin-right: 5px;
-    border-radius: 10px;
-    cursor: pointer;
+  padding: 40px;
+  border: 2px solid rgb(121,189,154);
+  margin-right: 5px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 li:hover{
-    background-color: rgb(121,189,154);
-    color: white;
+  background-color: rgb(121,189,154);
+  color: white;
 }
 li:active{
-    opacity: 0.7;
+  opacity: 0.7;
 }
 *{
-   color: #444444;
+ color: #444444;
 }
 .main-container{
-   margin: auto;
-   border: 3px solid rgb(121,189,154);
-   border-radius: 10px;
-   padding: 20px;
-   width: 600px;
+ margin: auto;
+ border: 3px solid rgb(121,189,154);
+ border-radius: 10px;
+ padding: 20px;
+ width: 600px;
 }
 .block{
-   display: flex;
-   align-items: center;
+ display: flex;
+ align-items: center;
 }
 .number-selected{
-   background-color: rgb(121,189,154);
-   color: white;
+ background-color: rgb(121,189,154);
+ color: white;
 }
 .bet-input{
-   padding: 15px;
-   border-radius: 10px;
-   border: 1px solid lightgrey;
-   font-size: 15pt;
-   margin: 0 10px;
+ padding: 15px;
+ border-radius: 10px;
+ border: 1px solid lightgrey;
+ font-size: 15pt;
+ margin: 0 10px;
+}
+
+#qr-reader { 
+  width: 320px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width: 1100px){
-   ul{
-      flex-direction: column;
-   }
-   li{
-      margin: 5px 0;
-   }
+ ul{
+  flex-direction: column;
+}
+li{
+  margin: 5px 0;
+}
 }

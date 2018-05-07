@@ -125,7 +125,7 @@ class App extends React.Component {
 
     const previewStyle = {
       height: 240,
-      width: 320,
+      width: 320
     }
 
     return (
@@ -149,7 +149,7 @@ class App extends React.Component {
 
       <hr/>
 
-      <div>
+      <div id="qr-reader">
       <QrReader
       delay={100}
       style={previewStyle}
