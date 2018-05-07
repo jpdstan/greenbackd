@@ -72,7 +72,7 @@ class App extends React.Component {
     liNodes.forEach(number => {
      number.addEventListener('click', event => {
       event.target.className = 'number-selected'
-      this.purchase(parseInt(event.target.innerHTML), done => {
+      this.purchase(parseInt(event.target.id), done => {
                // Remove the other number selected
                for(let i = 0; i < liNodes.length; i++){
                 liNodes[i].className = ''
@@ -104,9 +104,9 @@ class App extends React.Component {
     <h2>Purchase Item</h2>
 
     <ul ref="numbers">
-    <li>0</li>
-    <li>1</li>
-    <li>2</li>
+    <li id="0">Impossible Burger</li>
+    <li id="1">Impossible Cheese Burger</li>
+    <li id="2">Impossible Salad</li>
     </ul>
 
     <hr/>
