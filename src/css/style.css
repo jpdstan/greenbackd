@@ -11,13 +11,13 @@ ul{
 }
 li{
     padding: 40px;
-    border: 2px solid rgb(30,134,255);
+    border: 2px solid rgb(121,189,154);
     margin-right: 5px;
     border-radius: 10px;
     cursor: pointer;
 }
 li:hover{
-    background-color: rgb(30,134,255);
+    background-color: rgb(121,189,154);
     color: white;
 }
 li:active{
@@ -28,7 +28,8 @@ li:active{
 }
 .main-container{
    margin: auto;
-   border: 3px solid green;
+   border: 3px solid rgb(121,189,154);
+   border-radius: 10px;
    padding: 20px;
    width: 600px;
 }
@@ -37,7 +38,7 @@ li:active{
    align-items: center;
 }
 .number-selected{
-   background-color: rgb(30,134,255);
+   background-color: rgb(121,189,154);
    color: white;
 }
 .bet-input{
