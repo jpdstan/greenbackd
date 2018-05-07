@@ -27,25 +27,24 @@ class App extends React.Component {
 
 
       //// Deploys contract with test values
-      //// Deploy once and use contract address: 0x537b1fc9dc8bbaa9fd1750987eabe86839390a08
+      //// Deploy once and use contract address: 0x4c437ff76D4c19C0000ae49C80E2ed79F765096F
       
-      var byteCode = compiledCode.bytecode
-      var deployedContract = GreenbackdContract.new(
-            [0, 1, 2], // itemIds to start with
-            [100, 150, 200], // values to start with
-            {data: byteCode, from: this.web3.eth.accounts[0], gas: 4300000},
-            function(error, result) { // callback on contract deployment
-             if(!error) {
-              console.log(result);
-           } else {
-              console.error(error);
-           }
-        })
-
-      this.state.ContractInstance = GreenbackdContract.at(deployedContract.address)
+      // var byteCode = compiledCode.bytecode
+      // var deployedContract = GreenbackdContract.new(
+      //       [0, 1, 2], // itemIds to start with
+      //       [100, 150, 200], // values to start with
+      //       {data: byteCode, from: this.web3.eth.accounts[0], gas: 4300000},
+      //       function(error, result) { // callback on contract deployment
+      //        if(!error) {
+      //         console.log(result);
+      //      } else {
+      //         console.error(error);
+      //      }
+      //   })
+      // this.state.ContractInstance = GreenbackdContract.at(deployedContract.address)
       
       // or use a previously deployed contract -- enter address in hex
-      // this.state.ContractInstance = GreenbackdContract.at("0x537b1fc9dc8bbaa9fd1750987eabe86839390a08")
+      this.state.ContractInstance = GreenbackdContract.at("0x4c437ff76D4c19C0000ae49C80E2ed79F765096F")
 
       window.a = this.state
     }
@@ -74,7 +73,6 @@ class App extends React.Component {
      number.addEventListener('click', event => {
       event.target.className = 'number-selected'
       this.purchase(parseInt(event.target.innerHTML), done => {
-
                // Remove the other number selected
                for(let i = 0; i < liNodes.length; i++){
                 liNodes[i].className = ''
