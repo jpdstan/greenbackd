@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Web3 from 'web3'
+import QrReader from 'react-qr-scanner'
 import './../css/style.css'
 import compiledCode from './../../build/contracts/Greenbackd.json'
 
@@ -9,16 +10,17 @@ class App extends React.Component {
  constructor(props){
   super(props)
   this.state = {
-   balance: 10
- }
+   balance: 10,
+   qrCode: -1,
+   boughtItem: ' '}
 
- if(typeof web3 != 'undefined'){
-   console.log("Using web3 detected from external source like Metamask")
-   this.web3 = new Web3(web3.currentProvider)
- }else{
-   console.log("No web3 detected. Falling back to http://localhost:8545. You should remove this fallback when you deploy live, as it's inherently insecure. Consider switching to Metamask for development. More info here: http://truffleframework.com/tutorials/truffle-and-metamask");
-   this.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"))
- }
+   if(typeof web3 != 'undefined'){
+     console.log("Using web3 detected from external source like Metamask")
+     this.web3 = new Web3(web3.currentProvider)
+   }else{
+     console.log("No web3 detected. Falling back to http://localhost:8545. You should remove this fallback when you deploy live, as it's inherently insecure. Consider switching to Metamask for development. More info here: http://truffleframework.com/tutorials/truffle-and-metamask");
+     this.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"))
+   }
 
       // // Parse contract api and create contract object
       this.web3.eth.defaultAccount = this.web3.eth.accounts[0]
@@ -45,6 +47,8 @@ class App extends React.Component {
       
       // or use a previously deployed contract -- enter address in hex
       this.state.ContractInstance = GreenbackdContract.at("0x4c437ff76D4c19C0000ae49C80E2ed79F765096F")
+
+      this.handleScan = this.handleScan.bind(this)
 
       window.a = this.state
     }
@@ -91,33 +95,77 @@ class App extends React.Component {
      })
   }
 
+  handleScan(data){
+    var value = parseInt(data)
+
+    if (value == 0 || value == 1 || value == 2){
+      if (value != this.state.qrCode) {
+        this.setState({qrCode: value})
+        if (value == 0){
+          this.setState({boughtItem: 'Impossible burger'})
+        }
+        if (value == 1){
+          this.setState({boughtItem: 'Impossible cheese burger'})
+        }
+        if (value == 2){
+          this.setState({boughtItem: 'Impossible salad'})
+        }
+        this.purchase(value)
+      }
+
+    }
+
+    
+  }
+  handleError(err){
+    console.error(err)
+  }
+
   render(){
-   return (
-    <div className="main-container">
-    <h1>Greenback&rsquo;d</h1>
 
-    <div className="block">
-    <b>Amount of CO2:</b> &nbsp;
-    <span>{this.state.balance}</span>
-    </div>
+    const previewStyle = {
+      height: 240,
+      width: 320,
+    }
 
-    <hr/>
+    return (
+      <div className="main-container">
+      <h1>Greenback&rsquo;d</h1>
 
-    <h2>Purchase Item</h2>
+      <div className="block">
+      <b>Amount of CO2:</b> &nbsp;
+      <span>{this.state.balance}</span>
+      </div>
 
-    <ul ref="numbers">
-    <li id="0">Impossible Burger</li>
-    <li id="1">Impossible Cheese Burger</li>
-    <li id="2">Impossible Salad</li>
-    </ul>
+      <hr/>
 
-    <hr/>
-    </div>
-    )
+      <h2>Purchase Item</h2>
+
+      <ul ref="numbers">
+      <li id="0">Impossible Burger</li>
+      <li id="1">Impossible Cheese Burger</li>
+      <li id="2">Impossible Salad</li>
+      </ul>
+
+      <hr/>
+
+      <div>
+      <QrReader
+      delay={100}
+      style={previewStyle}
+      onError={this.handleError}
+      onScan={this.handleScan}
+      />
+      <p>You bought: {this.state.boughtItem}</p>
+      </div>
+
+
+      </div>
+      )
   }
 }
 
 ReactDOM.render(
-<App />,
-document.querySelector('#root')
-)
+  <App />,
+  document.querySelector('#root')
+  )
