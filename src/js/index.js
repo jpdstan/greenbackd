@@ -53,10 +53,11 @@ class App extends React.Component {
       this.updateState()
       this.setupListeners()
 
-      setInterval(this.updateState.bind(this), 7e3)
+      setInterval(this.updateState.bind(this), 1e3)
     }
 
     updateState(){
+      this.web3.eth.defaultAccount = this.web3.eth.accounts[0]
       this.state.ContractInstance.getBalance((error, result) => {
        if(result != null){
         this.setState({
@@ -83,13 +84,14 @@ class App extends React.Component {
   }
 
   purchase(number, cb){
-   this.state.ContractInstance.makePurchase(number, 
-    (err, result) => {
-     cb()
-   })
- }
+    this.web3.eth.defaultAccount = this.web3.eth.accounts[0]
+    this.state.ContractInstance.makePurchase(number, 
+      (err, result) => {
+       cb()
+     })
+  }
 
- render(){
+  render(){
    return (
     <div className="main-container">
     <h1>Greenback&rsquo;d</h1>

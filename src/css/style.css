@@ -27,7 +27,10 @@ li:active{
    color: #444444;
 }
 .main-container{
+   margin: auto;
+   border: 3px solid green;
    padding: 20px;
+   width: 600px;
 }
 .block{
    display: flex;
