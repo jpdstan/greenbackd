@@ -34,8 +34,9 @@ li:active{
  width: 600px;
 }
 .block{
- display: flex;
- align-items: center;
+ text-align: center;
+ margin-left: auto;
+ margin-right: auto;
 }
 .number-selected{
  background-color: rgb(121,189,154);
@@ -56,10 +57,23 @@ li:active{
 }
 
 @media (max-width: 1100px){
- ul{
-  flex-direction: column;
+  ul{
+    flex-direction: column;
+  }
+  li{
+    margin: 5px 0;
+  }
 }
-li{
-  margin: 5px 0;
+
+.header {
+  text-align: center;
+  margin-left: auto;
+  maring-right: auto;
 }
+
+#logo {
+  width: 100px;
+  length: 100px;
 }
+
+
