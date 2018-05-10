@@ -4,11 +4,11 @@ import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 contract Greenbackd is Ownable {
 
-    // Items to token value
+    // Items to token value, i.e. item's worth in CO2 savings
     mapping (uint32 => uint32) itemIdToToken;
 
-    // User ID to balance
-    mapping (address => uint32) userIdToBalance;
+    // Company ID to balance
+    mapping (address => uint32) companyIdToBalance;
 
     constructor(uint32[] itemIds, uint32[] tokenValues) public {
         
@@ -22,12 +22,12 @@ contract Greenbackd is Ownable {
     // Credit MSG.SENDER's balance with the appropriate token amount.
     function makePurchase(uint32 itemId) external {
         require(itemIdToToken[itemId] != 0); // item must exist
-        userIdToBalance[msg.sender] += itemIdToToken[itemId];
+        companyIdToBalance[msg.sender] += itemIdToToken[itemId];
     }
 
     // Get balance of MSG.SENDER.
     function getBalance() view external returns (uint32 balance) {
-        return userIdToBalance[msg.sender];
+        return companyIdToBalance[msg.sender];
     }
 
     // Add an (itemId, value) pair to itemIdToToken.
