@@ -15,7 +15,7 @@ This is a simple web application that demonstrates consumer facing interface tha
 
 ## Screenshot
 
-![Consumer facing interface](./img/screenshot.png "Screenshot")
+![Consumer facing interface](https://people.eecs.berkeley.edu/~ocal/files/screenshot.png "Screenshot")
 
 ## Setup
 
