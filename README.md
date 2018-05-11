@@ -1,6 +1,8 @@
 
 # Greenback'd Ethereum Dapp
 
+**Website:** https://github.com/jpdstan/greenbackd
+
 ## Description
 This is a simple web application that demonstrates consumer facing interface that interacts with [our smart contract]((https://kovan.etherscan.io/address/0x4c437ff76d4c19c0000ae49c80e2ed79f765096f) deployed in the [Kovan test network](https://kovan-testnet.github.io/website/). The smart contract is programmed using the [Solidity](https://solidity.readthedocs.io/en/v0.4.23/#) language. The interface is programmed using [React](https://reactjs.org/) JavaScript library. To interact with the smart contract we use the [Truffle](http://truffleframework.com/) framework. The modules used in the project are bundled using [webpack](https://webpack.js.org/).
 
